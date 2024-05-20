@@ -1,12 +1,18 @@
 package org.learning.products;
 
 public class Smartphone extends Product {
-    String IMEI;
-    double memory;
+    private String IMEI;
+    private double memory;
 
     public Smartphone(String name, String description, double price, int vat, String IMEI, double memory) {
         super(name, description, price, vat);
         this.IMEI = IMEI;
         this.memory = memory;
+    }
+
+    @Override
+    public String toString() {
+        return "Smartphone [IMEI=" + IMEI + ", memory=" + memory + ", productCode=" + productCode + ", name=" + name
+                + ", description=" + description + ", price=" + price + ", vat=" + vat + "]";
     }
 }

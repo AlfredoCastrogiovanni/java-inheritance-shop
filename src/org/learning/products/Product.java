@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 import java.util.Random;
 
 public class Product {
-    private int productCode;
-    private String name;
-    private String description;
-    private BigDecimal price;
-    private int vat;
+    protected int productCode;
+    protected String name;
+    protected String description;
+    protected BigDecimal price;
+    protected int vat;
 
     public Product(String name, String description, double price, int vat) {
         Random random = new Random();
@@ -64,5 +64,11 @@ public class Product {
 
     public void setVat(int vat) {
         this.vat = vat;
+    }
+
+    @Override
+    public String toString() {
+        return "Product [productCode=" + productCode + ", name=" + name + ", description=" + description + ", price="
+                + price + ", vat=" + vat + "]";
     }
 }

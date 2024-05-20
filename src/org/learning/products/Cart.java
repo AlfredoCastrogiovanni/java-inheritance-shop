@@ -88,6 +88,7 @@ public class Cart {
                         viewCart(cart, scanner);
                         break;
                     case 3:
+                        viewCart(cart, scanner);
                         System.out.println("Exiting...");
                         scanner.close();
                         return;
@@ -122,7 +123,8 @@ public class Cart {
             System.out.println("          Is Empty           ");
         } else {
             for (int i = 0; i < cart.length; i++) {
-                System.out.println(i + " - " + cart[i].getFullName());
+                // System.out.println(i + " - " + cart[i].getFullName());
+                System.out.println(cart[i]);
             }
         }
 
