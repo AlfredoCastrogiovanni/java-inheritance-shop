@@ -10,7 +10,7 @@ public class Cart {
         Product[] cart = new Product[0];
 
         while (true) {
-            
+
             printMenu();
 
             try {
@@ -85,28 +85,14 @@ public class Cart {
                         }
                         break;
                     case 2:
-                        System.out.println("-----------------------------");
-                        System.out.println("|           CART            |");
-                        System.out.println("-----------------------------");
-                        
-                        if (cart.length <= 0) {
-                            System.out.println("          Is Empty           ");
-                        } else {
-                            for (int i = 0; i < cart.length; i++) {
-                                System.out.println(i + " - " + cart[i].getFullName());
-                            }
-                        }
-
-                        System.out.println();
-                        System.out.print("Enter to exit");
-                        scanner.nextLine();
-
+                        viewCart(cart, scanner);
                         break;
                     case 3:
                         System.out.println("Exiting...");
                         scanner.close();
                         return;
                     default:
+                        System.out.println("Invalid choice. Please enter a number between 1 and 3.");
                         break;
                 }
             } catch (Exception e) {
@@ -125,6 +111,24 @@ public class Cart {
         System.out.println("3. Exit");
         System.out.println("----------------------------");
         System.out.println();
+    }
+
+    private static void viewCart(Product[] cart, Scanner scanner) {
+        System.out.println("-----------------------------");
+        System.out.println("|           CART            |");
+        System.out.println("-----------------------------");
+        
+        if (cart.length <= 0) {
+            System.out.println("          Is Empty           ");
+        } else {
+            for (int i = 0; i < cart.length; i++) {
+                System.out.println(i + " - " + cart[i].getFullName());
+            }
+        }
+
+        System.out.println();
+        System.out.print("Enter to exit");
+        scanner.nextLine();
     }
 
     public static Product[] addToCart(Product[] cart, Product item) {
