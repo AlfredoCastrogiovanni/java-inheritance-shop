@@ -8,6 +8,7 @@ public class Cart {
         int choice;
 
         Product[] cart = new Product[0];
+        boolean fidelityCard = false;
 
         while (true) {
 
@@ -85,10 +86,14 @@ public class Cart {
                         }
                         break;
                     case 2:
-                        viewCart(cart, scanner);
+                        viewCart(cart, scanner, fidelityCard);
                         break;
                     case 3:
-                        viewCart(cart, scanner);
+                        System.out.println("Fidelity card added.");
+                        fidelityCard = true;
+                        break;
+                    case 4:
+                        viewCart(cart, scanner, fidelityCard);
                         System.out.println("Exiting...");
                         scanner.close();
                         return;
@@ -109,24 +114,36 @@ public class Cart {
         System.out.println("----------------------------");
         System.out.println("1. Add product");
         System.out.println("2. View your cart");
-        System.out.println("3. Exit");
+        System.out.println("3. Add fidelity card");
+        System.out.println("4. Exit");
         System.out.println("----------------------------");
         System.out.println();
     }
 
-    private static void viewCart(Product[] cart, Scanner scanner) {
+    private static void viewCart(Product[] cart, Scanner scanner, boolean fidelityCard) {
         System.out.println("-----------------------------");
         System.out.println("|           CART            |");
         System.out.println("-----------------------------");
-        
+
+        double total = 0;
+
         if (cart.length <= 0) {
             System.out.println("          Is Empty           ");
+        } else if (fidelityCard) {
+            for (int i = 0; i < cart.length; i++) {
+                System.out.println(cart[i]);
+                total += cart[i].priceWithFidelityCard().doubleValue();
+            }
         } else {
             for (int i = 0; i < cart.length; i++) {
-                // System.out.println(i + " - " + cart[i].getFullName());
                 System.out.println(cart[i]);
+                total += cart[i].getPriceWithVat().doubleValue();
             }
         }
+
+
+        System.out.println();
+        System.out.println("Total: " + total);
 
         System.out.println();
         System.out.print("Enter to exit");

@@ -66,6 +66,10 @@ public class Product {
         this.vat = vat;
     }
 
+    public BigDecimal priceWithFidelityCard() {
+        return getPriceWithVat().subtract(getPriceWithVat().multiply(BigDecimal.valueOf(2)).divide(BigDecimal.valueOf(100)));
+    }
+
     @Override
     public String toString() {
         return "Product [productCode=" + productCode + ", name=" + name + ", description=" + description + ", price="
