@@ -19,11 +19,11 @@ public class Smartphone extends Product {
     }
 
     @Override
-    public BigDecimal priceWithFidelityCard() {
+    public BigDecimal getPrice(boolean hasFidelityCard) {
         if (memory < 32) {
-            return getPriceWithVat().subtract(getPriceWithVat().multiply(BigDecimal.valueOf(5)).divide(BigDecimal.valueOf(100)));
+            return priceWithVat().subtract(priceWithVat().multiply(BigDecimal.valueOf(5)).divide(BigDecimal.valueOf(100)));
         } else {
-            return super.priceWithFidelityCard();
+            return super.getPrice(hasFidelityCard);
         }
     }
 }

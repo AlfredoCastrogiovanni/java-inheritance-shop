@@ -37,12 +37,16 @@ public class Product {
         return description;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public BigDecimal getPrice(boolean hasFidelityCard) {
+        if (hasFidelityCard) {
+            return priceWithVat().subtract(priceWithVat().multiply(BigDecimal.valueOf(2)).divide(BigDecimal.valueOf(100)));
+        } else {
+            return priceWithVat();
+        }
     }
 
-    public BigDecimal getPriceWithVat() {
-        return price.add((price.multiply(BigDecimal.valueOf(vat))).divide(BigDecimal.valueOf(100)));
+    public BigDecimal getPriceWithoutVat() {
+        return price;
     }
 
     public int getVat() {
@@ -66,13 +70,14 @@ public class Product {
         this.vat = vat;
     }
 
-    public BigDecimal priceWithFidelityCard() {
-        return getPriceWithVat().subtract(getPriceWithVat().multiply(BigDecimal.valueOf(2)).divide(BigDecimal.valueOf(100)));
-    }
-
     @Override
     public String toString() {
         return "Product [productCode=" + productCode + ", name=" + name + ", description=" + description + ", price="
                 + price + ", vat=" + vat + "]";
+    }
+
+    // Utilities methods
+    protected BigDecimal priceWithVat() {
+        return price.add((price.multiply(BigDecimal.valueOf(vat))).divide(BigDecimal.valueOf(100)));
     }
 }

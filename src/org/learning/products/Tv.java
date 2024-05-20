@@ -19,11 +19,11 @@ public class Tv extends Product {
     }
 
     @Override
-    public BigDecimal priceWithFidelityCard() {
+    public BigDecimal getPrice(boolean hasFidelityCard) {
         if (!isSmart) {
-            return getPriceWithVat().subtract(getPriceWithVat().multiply(BigDecimal.valueOf(10)).divide(BigDecimal.valueOf(100)));
+            return priceWithVat().subtract(priceWithVat().multiply(BigDecimal.valueOf(10)).divide(BigDecimal.valueOf(100)));
         } else {
-            return super.priceWithFidelityCard();
+            return super.getPrice(hasFidelityCard);
         }
     }
 }

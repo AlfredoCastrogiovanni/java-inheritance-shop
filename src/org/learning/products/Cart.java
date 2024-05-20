@@ -127,17 +127,26 @@ public class Cart {
 
         double total = 0;
 
+        // if (cart.length <= 0) {
+        //     System.out.println("          Is Empty           ");
+        // } else if (fidelityCard) {
+        //     for (int i = 0; i < cart.length; i++) {
+        //         System.out.println(cart[i]);
+        //         total += cart[i].priceWithFidelityCard().doubleValue();
+        //     }
+        // } else {
+        //     for (int i = 0; i < cart.length; i++) {
+        //         System.out.println(cart[i]);
+        //         total += cart[i].getPriceWithVat().doubleValue();
+        //     }
+        // }
+
         if (cart.length <= 0) {
             System.out.println("          Is Empty           ");
-        } else if (fidelityCard) {
-            for (int i = 0; i < cart.length; i++) {
-                System.out.println(cart[i]);
-                total += cart[i].priceWithFidelityCard().doubleValue();
-            }
         } else {
             for (int i = 0; i < cart.length; i++) {
                 System.out.println(cart[i]);
-                total += cart[i].getPriceWithVat().doubleValue();
+                total += cart[i].getPrice(fidelityCard).doubleValue();
             }
         }
 
